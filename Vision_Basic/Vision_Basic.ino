@@ -1,3 +1,21 @@
+    Copyright (C) 2021  Nonscio, LLC
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+//================================================================================
+//CONSTANTS
+//================================================================================
+
 const int motorRightA = 2;
 const int motorRightB = 4;
 const int motorLeftA = 7;
@@ -8,13 +26,29 @@ const int enableLeft = 6;
 const int echoPin = 12; //NEW* Define the Echo Pin
 const int trigPin = 13; //NEW* Define the Trig Pin
 
+//================================================================================
+//VARIABLES
+//================================================================================
+
 long duration;          //NEW* Define a variable to hold the ping duration
 int distance;           //NEW* Define a variable to hold the distance value
 long randomNumber;      //NEW* Define a variable to hold a random value
 
-void setup() {
-  // put your setup code here, to run once:
+//================================================================================
+//FUNCTIONS
+//================================================================================
 
+/**
+ * Function: setup()
+ * Description: The setup() function runs once after the microcontroller is 
+ * booted or reset. Sets the pin modes of the defined motor logic pin to OUTPUT
+ * mode. Sets the echoPin as INPUT and the trigPin as OUTPUT. Initializes
+ * distance and duration as 0. Initializes rand function, and serial monitor for
+ * debugging.
+ */
+
+void setup() {
+  
   pinMode(motorRightA, OUTPUT);
   pinMode(motorRightB, OUTPUT);
   pinMode(motorLeftA, OUTPUT);
@@ -33,6 +67,13 @@ void setup() {
   Serial.begin(9600);
 
 }
+
+/**
+ * Function: loop()
+ * Description: The loop() function runs repeatedly in a loop after the setup()
+ * function has completed. Executes code to operate the Ultrasonic sensor,
+ * interpret sensor data and make and execute descisions based on sensor data.
+ */
 
 void loop() {
   // put your main code here, to run repeatedly:
