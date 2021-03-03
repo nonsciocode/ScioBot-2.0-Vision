@@ -24,16 +24,16 @@ const int motorLeftB = 8;
 const int enableRight = 5;
 const int enableLeft = 6; 
 
-const int echoPin = 12; //NEW* Define the Echo Pin
-const int trigPin = 13; //NEW* Define the Trig Pin
+const int echoPin = 12; //Define the Echo Pin
+const int trigPin = 13; //Define the Trig Pin
 
 //================================================================================
 //VARIABLES
 //================================================================================
 
-long duration;          //NEW* Define a variable to hold the ping duration
-int distance;           //NEW* Define a variable to hold the distance value
-long randomNumber;      //NEW* Define a variable to hold a random value
+float duration;          //Define a variable to hold the ping duration
+float distance;          //Define a variable to hold the distance value
+long randomNumber;       //Define a variable to hold a random value
 
 //================================================================================
 //FUNCTIONS
@@ -57,13 +57,10 @@ void setup() {
   pinMode(enableRight, OUTPUT);
   pinMode(enableLeft, OUTPUT);
 
-  pinMode(echoPin, INPUT);    //NEW* Set Echo Pin as INPUT
-  pinMode(trigPin, OUTPUT);   //NEW* Set Trig Pin as OUTPUT
+  pinMode(echoPin, INPUT);    //Set Echo Pin as INPUT
+  pinMode(trigPin, OUTPUT);   //Set Trig Pin as OUTPUT
 
-  duration = 0;               //NEW* Initilize duration as 0
-  distance = 0;               //NEW* Initilize distance as 0
-
-  randomSeed(analogRead(0));  //NEW* Initilize rand function with seed
+  randomSeed(analogRead(0));  //Initilize rand function with seed
 
   Serial.begin(9600);
 
@@ -85,7 +82,7 @@ void loop() {
   delayMicroseconds(10);               //Leave on HIGH for 10 μs
   digitalWrite(trigPin, LOW);          //End Ping by setting trig pin to LOW  
   duration = pulseIn(echoPin, HIGH);   //Reads the Echo Pin and returns the duration of sound wave travel
-  distance = duration * 0.034 / 2;     //Calculate the speed of the sound wave and divide by 2 (out and back)
+  distance = duration * 0.0343 / 2;     //Calculate the speed of the sound wave and divide by 2 (out and back)
 
   Serial.print("Distance: ");
   Serial.println(distance);
